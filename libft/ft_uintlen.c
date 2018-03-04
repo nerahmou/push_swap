@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_abs.c                                         .::    .:/ .      .::   */
+/*   nbrlen.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/29 20:00:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/11 15:55:05 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 14:29:45 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 22:16:55 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-intmax_t	ft_abs(intmax_t nbr)
+int		ft_uintlen(uintmax_t n, int base)
 {
-	return (nbr < 0 ? -nbr : nbr);
+	int length;
+
+	length = 0;
+	if (n == 0)
+		length++;
+	while (n)
+	{
+		length++;
+		n = n / base;
+	}
+	return (length);
 }

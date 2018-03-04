@@ -11,11 +11,11 @@
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "include/push_swap.h"
-/*
+#include "../include/push_swap.h"
+
 int	check_error(char *str, t_queue *queue)
 {
+	queue = NULL;
 	if (ft_strcmp(str, "2147483647") > 0 || ft_strcmp(str, "-2147483648") > 0)
 		return (0);
 	if (str[0] == '-')
@@ -40,11 +40,11 @@ int	multi_nbr(const char *argv, t_queue *queue)
 		if (!(ret = check_error(tab[i], queue)))
 			break ;
 	}
-	
+
 	return (ret);
 }
 
-int	fill_queue(const char *argv[])
+int	parse_param(const char *argv[])
 {
 	int i;
 	t_queue *queue;
@@ -53,23 +53,14 @@ int	fill_queue(const char *argv[])
 	queue = init();
 	while (argv[i])
 	{
-		// si il y' a des espaces
 		if (ft_strchr(argv[i], ' '))
 			multi_nbr(argv[i], queue);
 		else
 		{
 			check_error((char *)argv[i], queue);
-			enfiler(queue, ft_atoi(argv[i]));
+			thread(queue, ft_atoi(argv[i]));
 		}
 		i++;
 	}
 	return (0);
-}
-*/
-
-
-int main(int argc, const char *argv[])
-{
-	printf("%d",ft_strcmp("2147483647","-2147483648"));
-	return 0;
 }

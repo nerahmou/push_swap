@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 18:09:11 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 11:18:06 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/13 17:45:37 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_realloc(char **ptr, char *content)
+static char	*ft_realloc(char **ptr, char *content)
 {
 	char *tmp;
 

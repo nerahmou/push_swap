@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_abs.c                                         .::    .:/ .      .::   */
+/*   get_left_ret.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/29 20:00:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/11 15:55:05 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/19 08:47:20 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/19 10:11:04 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/ft_printf.h"
 
-intmax_t	ft_abs(intmax_t nbr)
+void	get_ret_value(va_list *ap, t_suitcase *s_c, int *ret)
 {
-	return (nbr < 0 ? -nbr : nbr);
+	if (!s_c->ret_nul)
+		*va_arg(*ap, int *) = *ret;
 }

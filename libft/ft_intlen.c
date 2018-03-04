@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_intlen.c                                      .::    .:/ .      .::   */
+/*   nbrlen.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/29 19:58:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/29 20:37:43 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 14:29:45 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/15 22:16:55 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intlen(long n, int base)
+int		ft_intlen(intmax_t n, int base)
 {
 	int length;
 
 	length = 0;
 	if (n <= 0)
 		length++;
-	n = ft_abs(n);
-	while (n != 0)
+	while (n)
 	{
 		length++;
 		n = n / base;

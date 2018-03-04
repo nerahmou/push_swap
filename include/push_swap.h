@@ -26,4 +26,9 @@ typedef struct		s_elem
 	struct	s_elem	*next;
 }					t_elem;
 
+t_queue				*init();
+void				thread(t_queue *queue, int nbr);
+void				process(t_queue *queue);
+void				display_queue(t_queue *queue);
+
 #endif

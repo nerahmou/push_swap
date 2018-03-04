@@ -13,66 +13,64 @@
 
 #include "../include/push_swap.h"
 
-t_queue	*init()
+t_queue	*init(void)
 {
-	t_queue	*pile;
-	//t_elem *elem;
+	t_queue	*queue;
 
-	pile = malloc(sizeof(*pile));
-	//elem = malloc(sizeof(*elem));
-	if (pile == NULL)
+	if (!(queue = malloc(sizeof(*queue))))
 		return (NULL);
-	//elem->nbr = 0;
-	//elem->next = NULL;
-	//pile->first = elem;
-	return (pile);
+	queue->first = NULL;
+	return (queue);
 }
 
-//-----------------------------------------------
-
-void	enfiler(t_queue *pile, int nbr)
+void	thread(t_queue *queue, int nbr)
 {
 	t_elem *new;
 	t_elem *tmp;
 
 	new = malloc(sizeof(*new));
 	tmp = NULL;
-	if (pile == NULL || new == NULL)
+	if (queue == NULL || new == NULL)
 		return ;
 	new->nbr = nbr;
 	new->next = NULL;
-	if (pile->first != NULL)
+	if (queue->first != NULL)
 	{
-		tmp = pile->first;
+		tmp = queue->first;
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
 	else
-		pile->first = new;
-
+		queue->first = new;
 }
 
-void	defiler(t_queue *pile)
+void	process(t_queue *queue)
 {
 	t_elem *tmp;
 
 	tmp = NULL;
-	if (pile == NULL)
+	if (queue == NULL)
 		return ;
-	if (pile->first != NULL)
+	if (queue->first != NULL)
 	{
-		tmp = pile->first;
-		pile->first = tmp->next;
+		tmp = queue->first;
+		queue->first = tmp->next;
 		free(tmp);
 	}
 }
 
-void	display_file(t_queue *pile)
+void	display_queue(t_queue *queue)
 {
 	t_elem *tmp;
 
-	tmp = pile->first;
+	tmp = NULL;
+	if (queue->first == NULL)
+	{
+		ft_printf("Liste vide\n");
+		return ;
+	}
+	tmp = queue->first;
 	while (tmp != NULL)
 	{
 		ft_printf("[%d]-->",tmp->nbr);

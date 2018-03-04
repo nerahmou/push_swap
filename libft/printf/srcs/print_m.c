@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_abs.c                                         .::    .:/ .      .::   */
+/*   print_m.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/29 20:00:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/11 15:55:05 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/05 22:04:00 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/17 13:58:24 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/ft_printf.h"
 
-intmax_t	ft_abs(intmax_t nbr)
+void	print_m(t_suitcase *s_c)
 {
-	return (nbr < 0 ? -nbr : nbr);
+	if (s_c->type)
+	{
+		if (s_c->is_minus)
+		{
+			s_c->ret += ft_putchar(s_c->type);
+			while (--s_c->width > 0)
+				s_c->ret += ft_putchar(' ');
+		}
+		else
+		{
+			while (s_c->width-- > 1)
+				s_c->ret += s_c->is_zero ? ft_putchar('0') : ft_putchar(' ');
+			s_c->ret += ft_putchar(s_c->type);
+		}
+	}
 }
