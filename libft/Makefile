@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2017/12/31 18:56:50 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/05 13:00:22 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,7 +133,7 @@ $(OBJ_PATH)/%.o: %.c
 	@$(CC) $(CFLAGS) -c $^ -o $@
 
 make_printf:
-	@make -C printf/ re
+	@make -C printf/ 
 
 clean:
 	@rm -rf $(OBJ_PATH)

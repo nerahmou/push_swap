@@ -6,23 +6,29 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2017/12/31 18:56:50 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/05 15:15:22 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean
 .SUFFIXES:
 
+FLAGS= no
 NAME = checker
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+
+ifeq ($(FLAGS), yes)
+	CFLAGS = -Wall -Wextra -Werror
+endif
 
 SRC_PATH = ./srcs
 OBJ_PATH = ./obj
 INC_PATH = ./include
 
 SRC_NAME =	main.c\
-			set_queue.c
+			set_queue.c\
+			parse_param.c\
+			push_swap.c
 INC_NAME = push_swap.h
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -33,7 +39,7 @@ INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(INC)
-	@make -C libft re
+	@make -C libft
 	@$(CC) $(CFLAGS) -o $@ $(OBJ) -I $(INC_PATH) -L./libft -lft
 	@echo "checker created 👍 \n"
 

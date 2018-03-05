@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/26 20:24:23 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 16:47:42 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/05 12:56:39 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,7 +57,6 @@
 # define SET_UNDERLINE "\e[4m"
 
 # define SET_RES "\e[0m"
-
 
 typedef	struct	s_suitcase
 {

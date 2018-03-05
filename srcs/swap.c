@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   checker.c                                        .::    .:/ .      .::   */
+/*   swap.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 15:18:56 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/05 15:44:58 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/05 16:32:29 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	main(int argc, const char *argv[])
+size_t	ft_lstlen(t_queue *queue)
 {
-	t_queues	s_c;
+	size_t length;
+	t_elem *tmp;
 
-	s_c.queue_a = NULL;
-	if (argc > 1)
+
+	length = 0;
+	tmp = queue->first;
+	while (tmp)
 	{
-		if (!parse_param(++argv, &(s_c.queue_a)))
-			ft_printf("{bold}Error\n{eoc}");
-		else
-		{
-			display_queue(s_c.queue_a);
-			s_c.queue_b = init();
-			while (get_next_line(0, &(s_c.operation)))
-			{
-				push_swap(s_c);
-				ft_printf("%s",s_c.operation);
-			}
-		}
-		//queue_clr(&queue);
+		length++;
+		tmp = tmp->next;
 	}
-	return (0);
+	return (length);
+}
+
+
+int	swap(t_queue *queue)
+{
+	t_elem *tmp;
+
+	tmp = NULL;
+
+	if (ft_lstlen(queue) < 2)
+		return (0);
+	tmp = queue->first;
+
 }
