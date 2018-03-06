@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/05 14:30:20 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 15:52:21 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 18:22:21 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,17 +30,30 @@ static int	swap_queue(t_queues s_c)
 static int	push_queue(t_queues s_c)
 {
 	if (s_c.operation[1] == 'a')
-		push(s_c.queue_a);
+		push(s_c.queue_a, s_c.queue_b);
 	else
-		push(s_c.queue_b);
+		push(s_c.queue_b, s_c.queue_a);
+	return (1);
+}
+
+static int	reverse_queue(t_queues s_c)
+{
+	if (s_c.operation[2] == 'a')
+		reverse(s_c.queue_a);
+	else if (s_c.operation[2] == 'b')
+		reverse(s_c.queue_b);
+	else
+	{
+		reverse(s_c.queue_a);
+		reverse(s_c.queue_b);
+	}
 	return (1);
 }
 
 static int	rotate_queue(t_queues s_c)
 {
 	if (ft_strlen(s_c.operation) == 3)
-		s_c.rev = 1;
-	s_c.rev = 0;
+		return (reverse_queue(s_c));
 	if (s_c.operation[1] == 'a')
 		rotate(s_c.queue_a);
 	else if (s_c.operation[1] == 'b')
@@ -53,7 +66,7 @@ static int	rotate_queue(t_queues s_c)
 	return (1);
 }
 
-int	push_swap(t_queues s_c)
+int			push_swap(t_queues s_c)
 {
 	if (s_c.operation[0] == 's')
 		swap_queue(s_c);

@@ -1,36 +1,50 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   push.c                                           .::    .:/ .      .::   */
+/*   rotate.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/05 15:42:28 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 16:46:21 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/06 14:52:42 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/06 18:21:32 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	push(t_queue *dest, t_queue *src)
+int	reverse(t_queue *queue)
 {
-	t_elem *new;
+	t_elem *head;
 	t_elem *tmp;
+	t_elem *last;
 
-	if (!dest || !src || ft_lstlen(src) < 1)
+	if (!queue->first || ft_lstlen(queue) < 2)
 		return (0);
-	if (!(new = malloc(sizeof(*new))))
+	head = queue->first;
+	tmp = head;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	last = tmp->next;
+	tmp->next = NULL;
+	last->next = head;
+	queue->first = last;
+	return (0);
+}
+
+int	rotate(t_queue *queue)
+{
+	t_elem *tmp;
+	t_elem *head;
+
+	if (!queue->first || ft_lstlen(queue) < 2)
 		return (0);
-	new->nbr = src->first->nbr;
-	new->next = NULL;
-	if (dest->first)
-	{
-		new->next = dest->first;
-		dest->first = new;
-	}
-	else
-		dest->first = new;
-	process(src);
+	tmp = queue->first;
+	head = tmp->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	queue->first->next = NULL;
+	tmp->next = queue->first;
+	queue->first = head;
 	return (0);
 }

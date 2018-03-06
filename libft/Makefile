@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/05 13:00:22 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 15:21:42 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRC =	ft_memchr.c\
 		ft_intlen.c\
 		ft_uintlen.c\
 		ft_wcharlen.c\
+		ft_lstlen.c\
 		get_next_line.c
 
 SRC_PRF =	ft_printf.c\

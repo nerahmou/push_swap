@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/05 15:15:22 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/06 18:26:04 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,11 @@ INC_PATH = ./include
 SRC_NAME =	main.c\
 			set_queue.c\
 			parse_param.c\
-			push_swap.c
+			push_swap.c\
+			swap.c\
+			push.c\
+			rotate.c
+
 INC_NAME = push_swap.h
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -40,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(INC)
 	@make -C libft
-	@$(CC) $(CFLAGS) -o $@ $(OBJ) -I $(INC_PATH) -L./libft -lft
+	@$(CC) $(CFLAGS) -o $@ $(OBJ) -I $(INC) -L./libft -lft
 	@echo "checker created 👍 \n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c

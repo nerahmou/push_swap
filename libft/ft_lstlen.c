@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   checker.c                                        .::    .:/ .      .::   */
+/*   ft_lstlen.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:29:27 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/06 14:56:48 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/06 18:29:20 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, const char *argv[])
+size_t	ft_lstlen(t_queue *queue)
 {
-	t_queues	s_c;
+	size_t length;
+	t_elem *tmp;
 
-	s_c.queue_a = NULL;
-	if (argc > 1)
+	length = 0;
+	tmp = queue->first;
+	while (tmp)
 	{
-		if (!parse_param(++argv, &(s_c.queue_a)))
-			ft_printf("{bold}Error\n{eoc}");
-		else
-		{
-			display_queue(s_c.queue_a);
-			s_c.queue_b = init();
-			while (get_next_line(0, &(s_c.operation)))
-			{
-				push_swap(s_c);
-				display_queue(s_c.queue_a);
-				display_queue(s_c.queue_b);
-			}
-		}
+		length++;
+		tmp = tmp->next;
 	}
-	return (0);
+	return (length);
 }

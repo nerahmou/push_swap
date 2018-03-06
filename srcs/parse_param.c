@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/05 15:10:22 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 18:27:56 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,11 +24,11 @@ static	void	free_str(char **tab)
 	tab = NULL;
 }
 
-int				check_duplicates(t_queue *queue)
+static int		check_duplicates(t_queue *queue)
 {
 	t_elem	*head;
 	t_elem	*tmp;
-	
+
 	tmp = queue->first;
 	while (tmp)
 	{
@@ -44,15 +44,7 @@ int				check_duplicates(t_queue *queue)
 	return (1);
 }
 
-int				check_size(char *str)
-{
-	if ((str[0] != '-' && ft_strcmp(str, "2147483647") > 0 ) ||
-			(str[0] == '-' && ft_strcmp(str, "-2147483648") > 0))
-		return (0);
-	return (1);
-}
-
-int				check_error(char *str, t_queue **queue)
+static int		check_error(char *str, t_queue **queue)
 {
 	int i;
 
@@ -61,7 +53,8 @@ int				check_error(char *str, t_queue **queue)
 		return (1);
 	if (ft_strlen(str) >= 10)
 	{
-		if (!check_size(str))
+		if ((str[0] != '-' && ft_strcmp(str, "2147483647") > 0) ||
+			(str[0] == '-' && ft_strcmp(str, "-2147483648") > 0))
 			return (0);
 	}
 	if (str[i] == '-')
@@ -75,7 +68,7 @@ int				check_error(char *str, t_queue **queue)
 	return (1);
 }
 
-int				multi_nbr(const char *argv, t_queue **queue)
+static int		multi_nbr(const char *argv, t_queue **queue)
 {
 	char	**tab;
 	int		i;

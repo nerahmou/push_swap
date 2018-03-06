@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/17 16:41:59 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 10:20:28 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 18:31:28 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	check_error(wchar_t *wstr, t_suitcase *s_c)
+int			check_error(wchar_t *wstr, t_suitcase *s_c)
 {
 	int i;
 
