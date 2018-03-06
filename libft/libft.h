@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 13:51:21 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:30:31 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 18:47:05 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,7 @@ typedef struct		s_list
 typedef struct		s_queue
 {
 	struct s_elem	*first;
+	char			name;
 }					t_queue;
 
 typedef struct		s_elem

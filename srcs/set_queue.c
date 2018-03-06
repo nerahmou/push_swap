@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 11:27:04 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 17:15:28 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/06 18:50:59 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,10 +67,11 @@ void		display_queue(t_queue *queue)
 	tmp = NULL;
 	if (queue->first == NULL)
 	{
-		ft_printf("Liste vide\n");
+		ft_printf("Pile %c : vide\n", queue->name);
 		return ;
 	}
 	tmp = queue->first;
+	ft_printf("Pile %c : ", queue->name);
 	while (tmp != NULL)
 	{
 		ft_printf("[%d]-->", tmp->nbr);
