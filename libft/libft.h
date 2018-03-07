@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 13:51:21 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:47:05 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 12:48:07 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define BUFF_SIZE 32
+# define BUFF_SIZE 2
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -44,7 +44,6 @@ typedef struct		s_queues
 	t_queue	*queue_a;
 	t_queue	*queue_b;
 	char	*operation;
-	int		rev;
 }					t_queues;
 
 void				*ft_memset(void *s, int c, size_t n);

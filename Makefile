@@ -6,46 +6,61 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/06 18:52:22 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/07 11:59:13 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean
 .SUFFIXES:
 
-FLAGS= no
+FLAGS= yes
 NAME = checker
 CC = gcc
+NAME_2 = push_swap
 
 ifeq ($(FLAGS), yes)
 	CFLAGS = -Wall -Wextra -Werror
 endif
 
+INC_PATH = ./include
 SRC_PATH = ./srcs
 OBJ_PATH = ./obj
-INC_PATH = ./include
 
-SRC_NAME =	main.c\
+SRC_NAME =	checker.c\
 			set_queue.c\
 			parse_param.c\
-			push_swap.c\
+			operations.c\
+			swap.c\
+			push.c\
+			rotate.c
+
+SRC_PUSH_NAME =push_swap.c\
+			set_queue.c\
+			parse_param.c\
+			operations.c\
 			swap.c\
 			push.c\
 			rotate.c
 
 INC_NAME = push_swap.h
 OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ_PUSH_NAME = $(SRC_PUSH_NAME:.c=.o)
 
+INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-INC = $(addprefix $(INC_PATH)/,$(INC_NAME))
+SRC_PUSH = $(addprefix $(SRC_PATH)/,$(SRC_PUSH_NAME))
+OBJ_PUSH = $(addprefix $(OBJ_PATH)/,$(OBJ_PUSH_NAME))
 
-all: $(NAME)
+all: $(NAME) $(NAME_2)
 
 $(NAME): $(OBJ) $(INC)
 	@make -C libft
-	@$(CC) $(CFLAGS) -o $@ $(OBJ) -I $(INC) -L./libft -lft
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) -I $(INC) -L./libft -lft
 	@echo "checker created 👍 \n"
+	
+$(NAME_2): $(OBJ_PUSH) $(INC)
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ_PUSH) -I $(INC) -L./libft -lft
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
@@ -56,6 +71,6 @@ clean:
 	
 fclean: clean
 	@make -C libft fclean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAME_2)
 
 re: fclean all

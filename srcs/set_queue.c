@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 11:27:04 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:50:59 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 12:01:27 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,6 @@ void		thread(t_queue *queue, int nbr)
 	t_elem *tmp;
 
 	new = malloc(sizeof(*new));
-	tmp = NULL;
 	if (queue == NULL || new == NULL)
 		return ;
 	new->nbr = nbr;
@@ -49,7 +48,6 @@ void		process(t_queue *queue)
 {
 	t_elem *tmp;
 
-	tmp = NULL;
 	if (queue == NULL)
 		return ;
 	if (queue->first != NULL)
@@ -64,7 +62,6 @@ void		display_queue(t_queue *queue)
 {
 	t_elem *tmp;
 
-	tmp = NULL;
 	if (queue->first == NULL)
 	{
 		ft_printf("Pile %c : vide\n", queue->name);

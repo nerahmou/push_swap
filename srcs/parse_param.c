@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:27:56 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/07 12:01:05 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,13 +50,10 @@ static int		check_error(char *str, t_queue **queue)
 
 	i = 0;
 	if (!ft_strlen(str))
-		return (1);
-	if (ft_strlen(str) >= 10)
-	{
-		if ((str[0] != '-' && ft_strcmp(str, "2147483647") > 0) ||
-			(str[0] == '-' && ft_strcmp(str, "-2147483648") > 0))
-			return (0);
-	}
+		return (0);
+	if (ft_strlen(str) >= 10 && ((str[0] != '-' && ft_strcmp(str, "2147483647")
+				> 0) || (str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
+		return (0);
 	if (str[i] == '-')
 		i++;
 	while (str[i])
@@ -75,16 +72,12 @@ static int		multi_nbr(const char *argv, t_queue **queue)
 	int		ret;
 
 	tab = ft_strsplit(argv, ' ');
-	i = 0;
+	i = -1;
 	ret = 1;
-	while (tab[i])
+	while (tab[++i])
 	{
 		if (!(ret = check_error(tab[i], queue)))
-		{
-			free_str(tab);
-			return (0);
-		}
-		i++;
+			break ;
 	}
 	free_str(tab);
 	return (ret);
@@ -94,9 +87,9 @@ int				parse_param(const char *argv[], t_queue **queue)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	*queue = init();
-	while (argv[i])
+	while (argv[++i])
 	{
 		if (ft_strchr(argv[i], ' '))
 		{
@@ -105,7 +98,11 @@ int				parse_param(const char *argv[], t_queue **queue)
 		}
 		else if (!check_error((char *)argv[i], queue))
 			return (0);
-		i++;
+	}
+	if (ft_lstlen(*queue) == 1)
+	{
+		queue_clr(queue);
+		exit(EXIT_SUCCESS);
 	}
 	return (1);
 }
