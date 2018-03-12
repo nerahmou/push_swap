@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 11:27:04 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 12:01:27 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 19:36:54 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -84,7 +84,7 @@ void		queue_clr(t_queue **queue)
 
 	head = *queue;
 	tmp = (*queue)->first;
-	if (*queue != NULL)
+	if (queue != NULL)
 	{
 		while (tmp != NULL)
 		{

@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 10:03:38 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 12:41:27 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/09 19:25:47 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,5 +77,9 @@ int			operations(t_queues s_c)
 	if (!ft_strcmp(s_c.operation, "rra") || !ft_strcmp(s_c.operation, "rrb")
 			|| !ft_strcmp(s_c.operation, "rrr"))
 		return (reverse_queue(s_c));
-	return (0);
+	queue_clr(&s_c.queue_a);
+	queue_clr(&s_c.queue_b);
+	ft_strdel(&s_c.operation);
+	ft_printf("{bold}{red}Error\n{eoc}");
+	exit(EXIT_FAILURE);
 }

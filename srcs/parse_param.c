@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 12:01:05 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/12 19:00:09 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ static	void	free_str(char **tab)
 
 	i = 0;
 	while (tab[i])
-		ft_strclr(tab[i++]);
+		ft_strdel(&tab[i++]);
 	free(tab);
 	tab = NULL;
 }
@@ -52,7 +52,7 @@ static int		check_error(char *str, t_queue **queue)
 	if (!ft_strlen(str))
 		return (0);
 	if (ft_strlen(str) >= 10 && ((str[0] != '-' && ft_strcmp(str, "2147483647")
-				> 0) || (str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
+			> 0) || (str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
 		return (0);
 	if (str[i] == '-')
 		i++;
@@ -99,7 +99,7 @@ int				parse_param(const char *argv[], t_queue **queue)
 		else if (!check_error((char *)argv[i], queue))
 			return (0);
 	}
-	if (ft_lstlen(*queue) == 1)
+	if (((*queue)->len = ft_lstlen(*queue)) == 1)
 	{
 		queue_clr(queue);
 		exit(EXIT_SUCCESS);
