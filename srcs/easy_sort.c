@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 21:50:00 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 23:12:54 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,7 +40,10 @@ static void	ft_last(t_queue *queue_a, t_queue *queue_b, int pile_a)
 				get_last(queue_b)->nbr))
 		ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
 	else
-		ft_printf(pile_a ? "ra\n" : "rb\n", rotate(queue_a));
+		if (check_last_low(queue_a, get_last(queue_a)->nbr, pile_a ? 0 : 1))
+			ft_printf(pile_a ? "rra\n" : "rrb\n", reverse(queue_a));
+		else
+			ft_printf(pile_a ? "ra\n" : "rb\n", rotate(queue_a));
 }
 
 static void	ft_next_last(t_queue *queue_a, t_queue *queue_b, t_fnlp fnlp)

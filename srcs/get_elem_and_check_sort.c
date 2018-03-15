@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 21:44:01 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 23:07:41 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,31 @@ int		check_sort(t_queue *queue, int rev)
 				return (0);
 			tmp = tmp->next;
 		}
+	return (1);
+}
+
+int		check_last_low(t_queue *queue, int last ,int rev)
+{
+	t_elem *tmp;
+
+	tmp = queue->first;
+	if (!rev)
+		while (tmp->next)
+		{
+			if (tmp->nbr < last)
+				return (0);
+			tmp = tmp->next;
+		}
+	else
+	{
+		tmp = tmp->next;
+		while (tmp)
+		{
+			if (last > tmp->nbr)
+				return (0);
+			tmp = tmp->next;
+		}
+	}
 	return (1);
 }
 

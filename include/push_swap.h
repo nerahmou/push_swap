@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 18:23:01 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 22:49:51 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,6 +36,7 @@ void				queue_clr(t_queue **queue);
 int					parse_param(const char *argv[], t_queue **queue);
 int					operations(t_queues s_c);
 int					check_sort(t_queue *queue, int rev);
+int					check_last_low(t_queue *queue, int last, int rev);
 
 int					swap(t_queue *queue);
 int					push(t_queue *dest, t_queue *src);
