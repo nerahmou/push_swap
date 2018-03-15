@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 19:00:09 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 21:49:36 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,8 +51,9 @@ static int		check_error(char *str, t_queue **queue)
 	i = 0;
 	if (!ft_strlen(str))
 		return (0);
-	if (ft_strlen(str) >= 10 && ((str[0] != '-' && ft_strcmp(str, "2147483647")
-			> 0) || (str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
+	if (ft_strlen(str) >= 10 &&
+			((str[0] != '-' && ft_strcmp(str, "2147483647") > 0) ||
+				(str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
 		return (0);
 	if (str[i] == '-')
 		i++;

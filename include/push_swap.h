@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/07 10:06:23 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/15 18:23:01 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,18 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+
+/*
+** function to store :	first, next and last number of the list
+**						and if we are int the list a
+*/
+typedef struct		s_fnlp
+{
+	int				first;
+	int				next;
+	int				last;
+	int				pile_a;
+}					t_fnlp;
 
 t_queue				*init();
 void				thread(t_queue *queue, int nbr);
@@ -23,9 +35,15 @@ void				queue_clr(t_queue **queue);
 
 int					parse_param(const char *argv[], t_queue **queue);
 int					operations(t_queues s_c);
+int					check_sort(t_queue *queue, int rev);
 
 int					swap(t_queue *queue);
 int					push(t_queue *dest, t_queue *src);
 int					rotate(t_queue *queue);
 int					reverse(t_queue *queue);
+
+int					easy_sort(t_queue *queue_a, t_queue *queue_b, int pile_a);
+t_elem				*get_next(t_queue *queue);
+t_elem				*get_last(t_queue *queue);
+
 #endif

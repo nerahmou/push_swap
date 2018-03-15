@@ -5,81 +5,78 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/07 10:03:38 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/09 19:25:47 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/15 21:44:38 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/15 21:44:39 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	push_queue(t_queues s_c)
+int	push(t_queue *dest, t_queue *src)
 {
-	if (s_c.operation[1] == 'a')
-		push(s_c.queue_a, s_c.queue_b);
-	else
-		push(s_c.queue_b, s_c.queue_a);
-	return (1);
-}
+	t_elem *new;
 
-static int	swap_queue(t_queues s_c)
-{
-	if (s_c.operation[1] == 'a')
-		swap(s_c.queue_a);
-	else if (s_c.operation[1] == 'b')
-		swap(s_c.queue_b);
-	else
+	if (!dest || !src || ft_lstlen(src) < 1)
+		return (0);
+	if (!(new = malloc(sizeof(*new))))
+		return (0);
+	new->nbr = src->first->nbr;
+	new->next = NULL;
+	if (dest->first)
 	{
-		swap(s_c.queue_a);
-		swap(s_c.queue_b);
+		new->next = dest->first;
+		dest->first = new;
 	}
-	return (1);
-}
-
-static int	reverse_queue(t_queues s_c)
-{
-	if (s_c.operation[2] == 'a')
-		reverse(s_c.queue_a);
-	else if (s_c.operation[2] == 'b')
-		reverse(s_c.queue_b);
 	else
-	{
-		reverse(s_c.queue_a);
-		reverse(s_c.queue_b);
-	}
+		dest->first = new;
+	process(src);
+	return (0);
+}
+
+int	swap(t_queue *queue)
+{
+	t_elem *elem;
+
+	if (ft_lstlen(queue) < 2)
+		return (0);
+	elem = queue->first;
+	ft_swap(&elem->nbr, &elem->next->nbr);
 	return (1);
 }
 
-static int	rotate_queue(t_queues s_c)
+int	reverse(t_queue *queue)
 {
-	if (s_c.operation[1] == 'a')
-		rotate(s_c.queue_a);
-	else if (s_c.operation[1] == 'b')
-		rotate(s_c.queue_b);
-	else
-	{
-		rotate(s_c.queue_a);
-		rotate(s_c.queue_b);
-	}
-	return (1);
+	t_elem *head;
+	t_elem *tmp;
+	t_elem *last;
+
+	if (!queue->first || ft_lstlen(queue) < 2)
+		return (0);
+	head = queue->first;
+	tmp = head;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	last = tmp->next;
+	tmp->next = NULL;
+	last->next = head;
+	queue->first = last;
+	return (0);
 }
 
-int			operations(t_queues s_c)
+int	rotate(t_queue *queue)
 {
-	if (!ft_strcmp(s_c.operation, "pa") || !ft_strcmp(s_c.operation, "pb"))
-		return (push_queue(s_c));
-	if (!ft_strcmp(s_c.operation, "sa") || !ft_strcmp(s_c.operation, "sb")
-			|| !ft_strcmp(s_c.operation, "ss"))
-		return (swap_queue(s_c));
-	if (!ft_strcmp(s_c.operation, "ra") || !ft_strcmp(s_c.operation, "rb")
-			|| !ft_strcmp(s_c.operation, "rr"))
-		return (rotate_queue(s_c));
-	if (!ft_strcmp(s_c.operation, "rra") || !ft_strcmp(s_c.operation, "rrb")
-			|| !ft_strcmp(s_c.operation, "rrr"))
-		return (reverse_queue(s_c));
-	queue_clr(&s_c.queue_a);
-	queue_clr(&s_c.queue_b);
-	ft_strdel(&s_c.operation);
-	ft_printf("{bold}{red}Error\n{eoc}");
-	exit(EXIT_FAILURE);
+	t_elem *tmp;
+	t_elem *head;
+
+	if (!queue->first || ft_lstlen(queue) < 2)
+		return (0);
+	tmp = queue->first;
+	head = tmp->next;
+	while (tmp->next)
+		tmp = tmp->next;
+	queue->first->next = NULL;
+	tmp->next = queue->first;
+	queue->first = head;
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/08 18:48:41 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/15 21:47:10 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,14 @@ FLAGS= yes
 NAME = checker
 CC = gcc
 NAME_2 = push_swap
+DEBUG = yes
 
 ifeq ($(FLAGS), yes)
 	CFLAGS = -Wall -Wextra -Werror
+endif
+
+ifeq ($(DEBUG), yes)
+	CFLAGS += -g
 endif
 
 INC_PATH = ./include
@@ -29,18 +34,18 @@ OBJ_PATH = ./obj
 SRC_NAME =	checker.c\
 			set_queue.c\
 			parse_param.c\
+			check_operations.c\
 			operations.c\
-			swap.c\
-			push.c\
-			rotate.c
+			get_elem_and_check_sort.c
 
 SRC_PUSH_NAME =push_swap.c\
 			set_queue.c\
 			parse_param.c\
+			check_operations.c\
 			operations.c\
-			swap.c\
-			push.c\
-			rotate.c
+			get_elem_and_check_sort.c\
+			easy_sort.c
+
 
 INC_NAME = push_swap.h
 OBJ_NAME = $(SRC_NAME:.c=.o)
