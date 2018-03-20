@@ -6,13 +6,16 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 22:49:51 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/20 22:46:24 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define NEXT 1
+# define LAST 2
+# define NEXT_LAST 3
 # include "../libft/libft.h"
 
 /*
@@ -44,7 +47,6 @@ int					rotate(t_queue *queue);
 int					reverse(t_queue *queue);
 
 int					easy_sort(t_queue *queue_a, t_queue *queue_b, int pile_a);
-t_elem				*get_next(t_queue *queue);
-t_elem				*get_last(t_queue *queue);
+int					get(t_queue *queue, char c);
 
 #endif
