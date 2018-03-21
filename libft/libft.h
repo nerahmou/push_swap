@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 13:51:21 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 18:29:34 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 17:10:30 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,7 @@ typedef struct		s_queue
 typedef struct		s_elem
 {
 	int				nbr;
+	struct s_elem	*prev;
 	struct s_elem	*next;
 }					t_elem;
 

@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:38 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 21:44:39 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 18:25:35 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,9 +23,11 @@ int	push(t_queue *dest, t_queue *src)
 		return (0);
 	new->nbr = src->first->nbr;
 	new->next = NULL;
+	new->prev = NULL;
 	if (dest->first)
 	{
 		new->next = dest->first;
+		dest->first->prev = new;
 		dest->first = new;
 	}
 	else
@@ -60,6 +62,8 @@ int	reverse(t_queue *queue)
 	last = tmp->next;
 	tmp->next = NULL;
 	last->next = head;
+	last->prev = NULL;
+	head->prev = last;
 	queue->first = last;
 	return (0);
 }
@@ -77,6 +81,8 @@ int	rotate(t_queue *queue)
 		tmp = tmp->next;
 	queue->first->next = NULL;
 	tmp->next = queue->first;
+	queue->first->prev = tmp;
+	head->prev = NULL;
 	queue->first = head;
 	return (0);
 }

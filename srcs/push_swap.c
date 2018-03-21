@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 10:04:58 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/20 18:11:20 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 15:34:50 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,12 +39,12 @@ static	int	sort(t_queue *queue_a, t_queue *queue_b)
 		return (ft_printf("sa\n", swap(queue_a)));
 	if (queue_a->len == 3)
 		return (sort_three(queue_a));
-	easy_sort(queue_a, queue_b, 1);
+	easy_sort(queue_a, queue_b);
 	while (queue_b->first)
 	{
 		ft_printf("pa\n", push(queue_a, queue_b));
 		if (!check_sort(queue_a, 0))
-			easy_sort(queue_a, queue_b, 1);
+			easy_sort(queue_a, queue_b);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 19:27:44 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 17:21:51 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,8 @@ int			main(int argc, const char *argv[])
 				display_queue(s_c.queue_a);
 				display_queue(s_c.queue_b);
 				ft_printf("\n");
+				display_queue_rev(s_c.queue_a);
+				display_queue_rev(s_c.queue_b);
 			}
 			if (check_sort(s_c.queue_a, 0) && !ft_lstlen(s_c.queue_b))
 				ft_printf("{green}{bold}OK{eoc}\n");

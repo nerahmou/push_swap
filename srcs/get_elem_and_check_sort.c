@@ -6,12 +6,24 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/20 23:11:10 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 11:01:55 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+int	sign(int pile_a, int nbr1, int nbr2)
+{
+	if (pile_a)
+	{
+		if (nbr1 > nbr2)
+			return (1);
+	}
+	else if (nbr1 < nbr2)
+		return (1);
+	return (0);
+}
 
 int		check_sort(t_queue *queue, int rev)
 {

@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 11:27:04 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/12 19:36:54 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/21 18:30:03 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,7 @@ void		thread(t_queue *queue, int nbr)
 	if (queue == NULL || new == NULL)
 		return ;
 	new->nbr = nbr;
+	new->prev = NULL;
 	new->next = NULL;
 	if (queue->first != NULL)
 	{
@@ -39,6 +40,7 @@ void		thread(t_queue *queue, int nbr)
 		while (tmp->next != NULL)
 			tmp = tmp->next;
 		tmp->next = new;
+		new->prev = tmp;
 	}
 	else
 		queue->first = new;
@@ -54,6 +56,8 @@ void		process(t_queue *queue)
 	{
 		tmp = queue->first;
 		queue->first = tmp->next;
+		if (queue->first)
+			queue->first->prev = NULL;
 		free(tmp);
 	}
 }
@@ -75,6 +79,28 @@ void		display_queue(t_queue *queue)
 		tmp = tmp->next;
 	}
 	ft_printf("[NULL]\n");
+}
+
+void		display_queue_rev(t_queue *queue)
+{
+	t_elem *tmp;
+
+	if (queue->first == NULL)
+	{
+		ft_printf("Pile %c : vide\n", queue->name);
+		return ;
+	}
+	tmp = queue->first;
+	while (tmp->next)
+		tmp = tmp->next;
+	ft_printf("Pile %c : ", queue->name);
+	ft_printf("[NULL]");
+	while (tmp != NULL)
+	{
+		ft_printf("<--[%d]", tmp->nbr);
+		tmp = tmp->prev;
+	}
+	ft_printf("\n");
 }
 
 void		queue_clr(t_queue **queue)
