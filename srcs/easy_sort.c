@@ -6,92 +6,90 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/21 14:28:09 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/22 18:34:13 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	double_op(t_queue *queue, int op)
+static	int	sort_three(t_queue *queue)
 {
-	int	first;
-	int	next;
-	int	last;
+	int total1;
+	int total2;
 
-	first = queue->first->nbr;
-	next = get(queue, 'n');
-	last = get(queue, 'l');
-	if (op == NEXT && next != last && ((first < next && last < first) ||
-				(first < next && first < last && next < last)))
-		return (1);
-	if (op == LAST && ((first < last && last < next) ||
-				(first < last && next < first)))
-		return (1);
-	if (op == NEXT_LAST && first < next && first < last && next > last)
-		return (1);
-	if (first < next && first < last && next < last)
-		return (1);
-	return (0);
+	total1 = queue->first->next->nbr - queue->first->nbr;
+	total2 = queue->first->next->nbr - queue->first->next->next->nbr;
+	if (total1 < 0 && total2 < 0)
+		total1 > total2 ? ft_printf("sa\n", swap(queue)) :
+			ft_printf("ra\n", rotate(queue));
+	else if (total1 > 0 && total2 > 0)
+		total1 > total2 ? ft_printf("rra\nsa\n", reverse(queue),
+				swap(queue)) : ft_printf("rra\n", reverse(queue));
+	else if (total1 < total2)
+		ft_printf("sa\nrra\n", swap(queue), reverse(queue));
+	return (1);
 }
 
-static void	ft_next(t_queue *queue_a, t_queue *queue_b)
+static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 {
-	if (ft_lstlen(queue_b) > 1 && double_op(queue_b, NEXT))
-		ft_printf("ss\n", swap(queue_a), swap(queue_b));
-	else
-		ft_printf("sa\n", swap(queue_a));
-}
+	int	pos_a;
+	int	pos_b;
 
-static void	ft_last(t_queue *queue_a, t_queue *queue_b)
-{
-	if (ft_lstlen(queue_b) > 2 && double_op(queue_b, LAST))
-		ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
-	else
-		ft_printf("rra\n", reverse(queue_a));
-}
-
-static void	ft_next_last(t_queue *queue_a, t_queue *queue_b, t_fnlp fnlp)
-{
-	if (fnlp.next < fnlp.last)
+	if ((pos_a = check_pos(queue_a)))
 	{
-		if (ft_lstlen(queue_b) > 2 && double_op(queue_b, NEXT_LAST))
-			ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
+		pos_b = check_pos_rev(queue_a);
+		if (pos_b + 1 < pos_a)
+		{
+			pos_b += 1;
+			while (pos_b--)
+				ft_printf("rra\n", reverse(queue_a));
+		}
 		else
-			ft_printf("ra\n", rotate(queue_a));
+			while (pos_a--)
+				ft_printf("ra\n", rotate(queue_a));
 	}
-	else
+	if (!check_sort(queue_a, 0))
+		ft_printf("pb\n", push(queue_b, queue_a));
+}
+
+static void	ft_apply(t_queue *queue_a, int op)
+{
+	if (op == NEXT_LAST)
 	{
-		if (ft_lstlen(queue_b) > 2 && double_op(queue_b, 0))
-			ft_printf("ss\nrrr\n", swap(queue_a), reverse(queue_a),
-					swap(queue_b), reverse(queue_b));
+		if (get(queue_a, 'n')->nbr < get(queue_a, 'l')->nbr)
+			ft_printf("ra\n", rotate(queue_a));
 		else
 			ft_printf("sa\nrra\n", swap(queue_a), reverse(queue_a));
 	}
+	else if (op == NEXT)
+		ft_printf("sa\n", swap(queue_a));
+	else
+		ft_printf("rra\n", reverse(queue_a));
 }
 
 int			easy_sort(t_queue *queue_a, t_queue *queue_b)
 {
 	t_fnlp fnlp;
 
-	if (ft_lstlen(queue_a) > 1)
-		while (!check_sort(queue_a, 0))
-		{
-			fnlp.first = queue_a->first->nbr;
-			fnlp.next = get(queue_a, 'n');
-			fnlp.last = get(queue_a, 'l');
-			if (fnlp.next != fnlp.last && fnlp.first > fnlp.next
-					&& fnlp.first > fnlp.last)
-				ft_next_last(queue_a, queue_b, fnlp);
-			else if (fnlp.first > fnlp.next)
-				ft_next(queue_a, queue_b);
-			else if (fnlp.first > fnlp.last)
-				ft_last(queue_a, queue_b);
-			else
-			{
-				ft_printf("pb\n", push(queue_b, queue_a));
-				easy_sort_b(queue_a, queue_b);
-			}
-		}
+	while (!check_sort(queue_a, 0))
+	{
+		fnlp.first = queue_a->first->nbr;
+		fnlp.next = get(queue_a, 'n')->nbr;
+		fnlp.last = get(queue_a, 'l')->nbr;
+		if (ft_lstlen(queue_a) == 3)
+			sort_three(queue_a);
+		else if (fnlp.next != fnlp.last && fnlp.first > fnlp.next
+				&& fnlp.first > fnlp.last)
+			ft_apply(queue_a, NEXT_LAST);
+		else if (fnlp.first > fnlp.next)
+			ft_apply(queue_a, NEXT);
+		else if (fnlp.first > fnlp.last)
+			ft_apply(queue_a, LAST);
+		else
+			ultime_sort(queue_a, queue_b);
+	}
+	while (queue_b->first)
+		ft_printf("pa\n", push(queue_a, queue_b));
 	return (1);
 }

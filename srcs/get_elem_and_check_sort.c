@@ -6,23 +6,59 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/21 11:01:55 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/22 18:35:02 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	sign(int pile_a, int nbr1, int nbr2)
+int		check_pos(t_queue *queue)
 {
-	if (pile_a)
+	t_elem	*tmp;
+	int		pos;
+	int		i;
+	int		min;
+
+	i = 0;
+	pos = 0;
+	tmp = queue->first;
+	min = tmp->nbr;
+	while (tmp)
 	{
-		if (nbr1 > nbr2)
-			return (1);
+		if (min > tmp->nbr)
+		{
+			pos = i;
+			min = tmp->nbr;
+		}
+		i++;
+		tmp = tmp->next;
 	}
-	else if (nbr1 < nbr2)
-		return (1);
-	return (0);
+	return (pos);
+}
+
+int		check_pos_rev(t_queue *queue)
+{
+	t_elem	*tmp;
+	int		pos;
+	int		i;
+	int		min;
+
+	i = 0;
+	pos = 0;
+	tmp = get(queue, 'l');
+	min = queue->first->nbr;
+	while (tmp)
+	{
+		if (min > tmp->nbr)
+		{
+			pos = i;
+			min = tmp->nbr;
+		}
+		i++;
+		tmp = tmp->prev;
+	}
+	return (pos);
 }
 
 int		check_sort(t_queue *queue, int rev)
@@ -47,39 +83,14 @@ int		check_sort(t_queue *queue, int rev)
 	return (1);
 }
 
-int		check_last_low(t_queue *queue, int last, int rev)
-{
-	t_elem *tmp;
-
-	tmp = queue->first;
-	if (!rev)
-		while (tmp->next)
-		{
-			if (tmp->nbr < last)
-				return (0);
-			tmp = tmp->next;
-		}
-	else
-	{
-		tmp = tmp->next;
-		while (tmp)
-		{
-			if (last > tmp->nbr)
-				return (0);
-			tmp = tmp->next;
-		}
-	}
-	return (1);
-}
-
-int		get(t_queue *queue, char c)
+t_elem	*get(t_queue *queue, char c)
 {
 	t_elem	*tmp;
 
 	tmp = queue->first;
 	if (c == 'n')
-		return (tmp->next->nbr);
+		return (tmp->next);
 	while (tmp->next)
 		tmp = tmp->next;
-	return (tmp->nbr);
+	return (tmp);
 }
