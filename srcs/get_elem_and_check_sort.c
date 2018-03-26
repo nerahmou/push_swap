@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/22 18:35:02 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/26 15:34:26 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ int		check_pos_rev(t_queue *queue)
 
 	i = 0;
 	pos = 0;
-	tmp = get(queue, 'l');
+	tmp = get(queue, ft_lstlen(queue) - 1, 0);
 	min = queue->first->nbr;
 	while (tmp)
 	{
@@ -83,14 +83,19 @@ int		check_sort(t_queue *queue, int rev)
 	return (1);
 }
 
-t_elem	*get(t_queue *queue, char c)
+t_elem	*get(t_queue *queue, int i, int rev)
 {
 	t_elem	*tmp;
 
 	tmp = queue->first;
-	if (c == 'n')
-		return (tmp->next);
-	while (tmp->next)
-		tmp = tmp->next;
+	if (!rev)
+		while (i--)
+			tmp = tmp->next;
+	else
+	{
+		tmp = get(queue, ft_lstlen(queue) - 1, 0);
+		while (i--)
+			tmp = tmp->prev;
+	}
 	return (tmp);
 }

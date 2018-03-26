@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/22 12:31:12 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/26 17:52:12 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,13 +28,12 @@ int			main(int argc, const char *argv[])
 			s_c.queue_a->name = 'A';
 			s_c.queue_b = init();
 			s_c.queue_b->name = 'B';
+			display_queue(s_c.queue_a, s_c.queue_b);
 			while (get_next_line(0, &s_c.operation))
 			{
 				operations(s_c);
 				ft_strdel(&s_c.operation);
-				display_queue(s_c.queue_a);
-				display_queue(s_c.queue_b);
-				ft_printf("\n");
+				display_queue(s_c.queue_a, s_c.queue_b);
 			}
 			if (check_sort(s_c.queue_a, 0) && !ft_lstlen(s_c.queue_b))
 				ft_printf("{green}{bold}OK{eoc}\n");

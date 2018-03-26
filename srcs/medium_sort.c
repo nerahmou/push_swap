@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   easy_sort.c                                      .::    .:/ .      .::   */
+/*   medium_sort.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/26 13:43:57 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/26 12:10:19 by nerahmou     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/26 17:05:20 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
+/*
 static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 {
 	int	pos_a;
@@ -35,23 +35,40 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 		ft_printf("pb\n", push(queue_b, queue_a));
 }
 
-int			easy_sort(t_queue *queue_a, t_queue *queue_b)
+static void	double_op(t_queue *queue_a, t_queue *queue_b, int op)
 {
-	t_fnlp fnlp;
-
-	while (!check_sort(queue_a, 0))
+	if (op == last)
+	{
+		if (queue_b->first->nbr < get(queue_b, ft_lstlen(queue_b) - 1, 0)->nbr)
+			ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
+		else
+			ft_printf("ra\n", rotate(queue_a));
+	}
+	else
+	{
+		if (queue_b->first->nbr < get(queue_b, 1, 0)->nbr)
+			ft_printf("ss\n", swap(queue_a), swap(queue_b));
+		else
+			ft_printf("sa\n", swap(queue_a));
+	}
+}
+*/
+int	medium_sort(t_queue *queue_a, t_queue *queue_b)
+{
+	partition(queue_a, queue_b);
+/*	while (!check_sort(queue_a, 0))
 	{
 		fnlp.first = queue_a->first->nbr;
 		fnlp.next = get(queue_a, 1, 0)->nbr;
 		fnlp.last = get(queue_a, ft_lstlen(queue_a) - 1, 0)->nbr;
 		if (fnlp.first > fnlp.last)
-			ft_printf("ra\n", rotate(queue_a));
+			double_op(queue_a, queue_b, last);
 		else if (fnlp.first > fnlp.next)
-			ft_printf("sa\n", swap(queue_a));
+			double_op(queue_a, queue_b, next);
 		else
 			ultime_sort(queue_a, queue_b);
 	}
 	while (queue_b->first)
 		ft_printf("pa\n", push(queue_a, queue_b));
-	return (1);
+*/	return (1);
 }
