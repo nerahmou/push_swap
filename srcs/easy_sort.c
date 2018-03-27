@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/26 13:43:57 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/27 15:34:16 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,9 +18,9 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 	int	pos_a;
 	int	pos_b;
 
-	if ((pos_a = check_pos(queue_a)))
+	if ((pos_a = check_pos(queue_a, 0)))
 	{
-		pos_b = check_pos_rev(queue_a);
+		pos_b = check_pos_rev(queue_a, 0);
 		if (pos_b + 1 < pos_a)
 		{
 			pos_b += 1;

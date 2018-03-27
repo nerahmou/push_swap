@@ -6,23 +6,12 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/15 21:49:36 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/27 14:55:56 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-static	void	free_str(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-		ft_strdel(&tab[i++]);
-	free(tab);
-	tab = NULL;
-}
 
 static int		check_duplicates(t_queue *queue)
 {
@@ -80,7 +69,11 @@ static int		multi_nbr(const char *argv, t_queue **queue)
 		if (!(ret = check_error(tab[i], queue)))
 			break ;
 	}
-	free_str(tab);
+	i = 0;
+	while (tab[i])
+		ft_strdel(&tab[i++]);
+	free(tab);
+	tab = NULL;
 	return (ret);
 }
 

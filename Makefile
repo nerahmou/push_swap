@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/26 15:44:27 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/03/27 15:06:42 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,14 +36,14 @@ SRC_NAME =	checker.c\
 			parse_param.c\
 			check_operations.c\
 			operations.c\
-			get_elem_and_check_sort.c
+			get_n_check.c
 
 SRC_PUSH_NAME =	push_swap.c\
 				set_queue.c\
 				parse_param.c\
 				check_operations.c\
 				operations.c\
-				get_elem_and_check_sort.c\
+				get_n_check.c\
 				easy_sort.c\
 				medium_sort.c\
 				partition.c
