@@ -43,8 +43,10 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 
 int	medium_sort(t_queue *queue_a, t_queue *queue_b)
 {
-	while (ft_lstlen(queue_a) > 6)
+	while (ft_lstlen(queue_a) > 2)
 		partition(queue_a, queue_b, 0);
+		if (queue_a->first->nbr > get(queue_a, 1, 0)->nbr)
+				ft_printf("sa\n", swap(queue_a));
 	while (ft_lstlen(queue_b))
 		ultime_sort(queue_a, queue_b);
 	return (1);

@@ -54,9 +54,9 @@ static	void	part(t_queue *queue_a, t_queue *queue_b, int pos, int rev, int i)
 		if (ft_lstlen(queue_b) > 1 && (queue_b->first->nbr > get(queue_b, ft_lstlen(queue_b) - 1, 0)->nbr
 					))
 			ft_printf("rb\n", rotate(queue_b));
-//		if (ft_lstlen(queue_b) > 2 && (queue_b->first->nbr < get(queue_b, 1, 0)->nbr
-//					))
-//			ft_printf("sb\n", swap(queue_b));
+		if (ft_lstlen(queue_b) > 2 && (queue_b->first->nbr < get(queue_b, 1, 0)->nbr
+					))
+			ft_printf("sb\n", swap(queue_b));
 }
 
 static int	get_pivot(t_queue *queue)
@@ -66,11 +66,11 @@ static int	get_pivot(t_queue *queue)
 	int		middle;
 	int		i;
 	int		nbr;
-	static	int ess = 6;
+	static	int ess = 4;
 
 	i = 0;
 	tmp2 = queue->first;
-	middle = ft_lstlen(queue) / ess;
+	middle = ft_lstlen(queue) / (ess > 2 ? ess-- : ess);
 	while (i != middle)
 	{
 		i = 0;
