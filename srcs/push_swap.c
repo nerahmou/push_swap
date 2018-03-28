@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 10:04:58 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/27 15:00:51 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/28 16:03:22 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@ int			main(int argc, const char *argv[])
 			queue_b->name = 'B';
 			if (check_sort(queue_a, 0))
 				;
-			else if (queue_a->len <= 10)
+			else if (queue_a->len <= 50)
 				easy_sort(queue_a, queue_b);
 			else
 				medium_sort(queue_a, queue_b);
