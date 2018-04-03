@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/27 16:32:09 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:13:44 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,14 +19,13 @@
 ** function to store :	first, next and last number of the list
 **						and if we are int the list a
 */
-enum operation {last, next};
 
-typedef struct		s_fnlp
+typedef struct		s_fnl
 {
 	int				first;
 	int				next;
 	int				last;
-}					t_fnlp;
+}					t_fnl;
 
 t_queue				*init();
 void				thread(t_queue *queue, int nbr);
@@ -50,7 +49,8 @@ int					reverse(t_queue *queue);
 
 int					easy_sort(t_queue *queue_a, t_queue *queue_b);
 
-int					medium_sort(t_queue *queue_a, t_queue *queue_b);
-void				partition(t_queue *queue_a, t_queue *queue_b, int rev);
+int					big_sort(t_queue *queue_a, t_queue *queue_b);
+void				partition_med(t_queue *queue_a, t_queue *queue_b, int rev);
+void				partition_big(t_queue *queue_a, t_queue *queue_b, int rev);
 
 #endif

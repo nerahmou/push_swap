@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/03/28 12:42:00 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/03 20:11:29 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC_PUSH_NAME =	push_swap.c\
 				operations.c\
 				get_n_check.c\
 				easy_sort.c\
-				medium_sort.c\
+				big_sort.c\
 				partition.c
 
 

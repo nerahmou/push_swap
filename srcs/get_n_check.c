@@ -6,16 +6,16 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/28 15:20:53 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 19:16:45 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	check_low(t_queue *queue, int pivot, int rev, int high)
+int		check_low(t_queue *queue, int pivot, int rev, int high)
 {
-	t_elem *tmp;
+	t_elem	*tmp;
 	int		pos;
 
 	pos = 0;
@@ -40,7 +40,6 @@ int	check_low(t_queue *queue, int pivot, int rev, int high)
 	}
 	return (pos);
 }
-
 
 int		check_pos(t_queue *queue, int rev)
 {

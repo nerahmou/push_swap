@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 11:27:04 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/27 15:02:39 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 19:19:33 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,11 +64,11 @@ void		process(t_queue *queue)
 
 void		display_queue(t_queue *queue_a, t_queue *queue_b)
 {
-	t_queue *tmp;
-	t_queue *tmp2;
-	t_elem *head;
-	t_elem *head2;
-	
+	t_queue	*tmp;
+	t_queue	*tmp2;
+	t_elem	*head;
+	t_elem	*head2;
+
 	head = queue_a->first;
 	head2 = queue_b->first;
 	tmp = queue_a;
