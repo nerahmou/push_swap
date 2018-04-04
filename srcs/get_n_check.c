@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 19:16:45 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:41:11 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		check_low(t_queue *queue, int pivot, int rev, int high)
+int		check_low(t_queue *queue, int pivot, int rev)
 {
 	t_elem	*tmp;
 	int		pos;
@@ -22,7 +22,7 @@ int		check_low(t_queue *queue, int pivot, int rev, int high)
 	if (!rev)
 	{
 		tmp = queue->first;
-		while (!high ? tmp->nbr >= pivot : pivot > tmp->nbr)
+		while (tmp->nbr >= pivot)
 		{
 			pos++;
 			tmp = tmp->next;
@@ -31,8 +31,8 @@ int		check_low(t_queue *queue, int pivot, int rev, int high)
 	else
 	{
 		pos++;
-		tmp = get(queue, ft_lstlen(queue) - 1, 0);
-		while (!high ? tmp->nbr >= pivot : pivot > tmp->nbr)
+		tmp = get(queue, ft_lstlen(queue) - 1);
+		while (tmp->nbr >= pivot)
 		{
 			pos++;
 			tmp = tmp->prev;
@@ -74,7 +74,7 @@ int		check_pos_rev(t_queue *queue, int rev)
 
 	i = 0;
 	pos = 0;
-	tmp = get(queue, ft_lstlen(queue) - 1, 0);
+	tmp = get(queue, ft_lstlen(queue) - 1);
 	min = queue->first->nbr;
 	while (tmp)
 	{
@@ -89,41 +89,26 @@ int		check_pos_rev(t_queue *queue, int rev)
 	return (pos);
 }
 
-int		check_sort(t_queue *queue, int rev)
+int		check_sort(t_queue *queue)
 {
 	t_elem *tmp;
 
 	tmp = queue->first;
-	if (!rev)
-		while (tmp->next)
-		{
-			if (tmp->nbr > tmp->next->nbr)
-				return (0);
-			tmp = tmp->next;
-		}
-	else
-		while (tmp->next)
-		{
-			if (tmp->nbr < tmp->next->nbr)
-				return (0);
-			tmp = tmp->next;
-		}
+	while (tmp->next)
+	{
+		if (tmp->nbr > tmp->next->nbr)
+			return (0);
+		tmp = tmp->next;
+	}
 	return (1);
 }
 
-t_elem	*get(t_queue *queue, int i, int rev)
+t_elem	*get(t_queue *queue, int pos)
 {
 	t_elem	*tmp;
 
 	tmp = queue->first;
-	if (!rev)
-		while (i--)
-			tmp = tmp->next;
-	else
-	{
-		tmp = get(queue, ft_lstlen(queue) - 1, 0);
-		while (i--)
-			tmp = tmp->prev;
-	}
+	while (pos--)
+		tmp = tmp->next;
 	return (tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/27 14:55:56 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:52:44 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,7 +45,8 @@ static int		check_error(char *str, t_queue **queue)
 				(str[0] == '-' && ft_strcmp(str, "-2147483648") > 0)))
 		return (0);
 	if (str[i] == '-')
-		i++;
+		if (str[++i] == '0')
+			return (0);
 	while (str[i])
 		if (!ft_isdigit(str[i++]))
 			return (0);

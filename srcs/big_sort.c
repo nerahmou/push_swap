@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/26 12:10:19 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:09:50 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:41:49 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,11 +46,11 @@ int			big_sort(t_queue *queue_a, t_queue *queue_b)
 {
 	if (ft_lstlen(queue_a) > 200)
 		while (ft_lstlen(queue_a) > 2)
-			partition_big(queue_a, queue_b, 0);
+			partition_big(queue_a, queue_b);
 	else
 		while (ft_lstlen(queue_a) > 2)
-			partition_med(queue_a, queue_b, 0);
-	if (!check_sort(queue_a, 0))
+			partition_med(queue_a, queue_b);
+	if (!check_sort(queue_a))
 		ft_printf("sa\n", swap(queue_a));
 	while (ft_lstlen(queue_b))
 		ultime_sort(queue_a, queue_b);

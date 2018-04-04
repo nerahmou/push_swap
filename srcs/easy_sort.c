@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:13:41 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:42:17 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 			while (pos_a--)
 				ft_printf("ra\n", rotate(queue_a));
 	}
-	if (!check_sort(queue_a, 0))
+	if (!check_sort(queue_a))
 		ft_printf("pb\n", push(queue_b, queue_a));
 }
 
@@ -39,11 +39,11 @@ int			easy_sort(t_queue *queue_a, t_queue *queue_b)
 {
 	t_fnl fnl;
 
-	while (!check_sort(queue_a, 0))
+	while (!check_sort(queue_a))
 	{
 		fnl.first = queue_a->first->nbr;
-		fnl.next = get(queue_a, 1, 0)->nbr;
-		fnl.last = get(queue_a, ft_lstlen(queue_a) - 1, 0)->nbr;
+		fnl.next = get(queue_a, 1)->nbr;
+		fnl.last = get(queue_a, ft_lstlen(queue_a) - 1)->nbr;
 		if (fnl.first > fnl.last)
 			ft_printf("ra\n", rotate(queue_a));
 		else if (fnl.first > fnl.next)

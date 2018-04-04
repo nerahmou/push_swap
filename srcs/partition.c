@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/26 15:37:48 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:07:10 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/03 20:40:30 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,7 @@ static void	part(t_queue *queue_a, t_queue *queue_b, int pos, int rev)
 		{
 			if (ft_lstlen(queue_b) > 1 &&
 					(queue_b->first->nbr >
-					get(queue_b, ft_lstlen(queue_b) - 1, 0)->nbr))
+					get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
 				ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
 			else
 				ft_printf("ra\n", rotate(queue_a));
@@ -46,7 +46,7 @@ static void	part(t_queue *queue_a, t_queue *queue_b, int pos, int rev)
 	}
 	else
 	{
-		tmp = get(queue_a, ft_lstlen(queue_a) - 1, 0);
+		tmp = get(queue_a, ft_lstlen(queue_a) - 1);
 		while (pos--)
 			ft_printf("rra\n", reverse(queue_a));
 	}
@@ -81,7 +81,7 @@ static int	get_pivot(t_queue *queue, int *div)
 	return (nbr);
 }
 
-void		partition_med(t_queue *queue_a, t_queue *queue_b, int rev)
+void		partition_med(t_queue *queue_a, t_queue *queue_b)
 {
 	t_elem		*tmp;
 	int			pos_a;
@@ -93,23 +93,20 @@ void		partition_med(t_queue *queue_a, t_queue *queue_b, int rev)
 	pivot = get_pivot(queue_a, &div);
 	while (found_less(queue_a, pivot))
 	{
-		pos_a = check_low(queue_a, pivot, 0, rev);
-		pos_b = check_low(queue_a, pivot, 1, rev);
-		if ((pos_a == pos_b &&
-					get(queue_a, pos_a, 0)->nbr <
-					get(queue_a, pos_b - 1, 1)->nbr)
-				|| pos_a < pos_b)
+		pos_a = check_low(queue_a, pivot, 0);
+		pos_b = check_low(queue_a, pivot, 1);
+		if (pos_a < pos_b)
 			part(queue_a, queue_b, pos_a, 0);
 		else
 			part(queue_a, queue_b, pos_b, 1);
 		if (ft_lstlen(queue_b) > 1 &&
 				(queue_b->first->nbr >
-				get(queue_b, ft_lstlen(queue_b) - 1, 0)->nbr))
+				get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
 			ft_printf("rb\n", rotate(queue_b));
 	}
 }
 
-void		partition_big(t_queue *queue_a, t_queue *queue_b, int rev)
+void		partition_big(t_queue *queue_a, t_queue *queue_b)
 {
 	t_elem		*tmp;
 	int			pos_a;
@@ -121,18 +118,15 @@ void		partition_big(t_queue *queue_a, t_queue *queue_b, int rev)
 	pivot = get_pivot(queue_a, &div);
 	while (found_less(queue_a, pivot))
 	{
-		pos_a = check_low(queue_a, pivot, 0, rev);
-		pos_b = check_low(queue_a, pivot, 1, rev);
-		if ((pos_a == pos_b &&
-					get(queue_a, pos_a, 0)->nbr <
-					get(queue_a, pos_b - 1, 1)->nbr)
-				|| pos_a < pos_b)
+		pos_a = check_low(queue_a, pivot, 0);
+		pos_b = check_low(queue_a, pivot, 1);
+		if (pos_a < pos_b)
 			part(queue_a, queue_b, pos_a, 0);
 		else
 			part(queue_a, queue_b, pos_b, 1);
 		if (ft_lstlen(queue_b) > 1 &&
 				(queue_b->first->nbr >
-				get(queue_b, ft_lstlen(queue_b) - 1, 0)->nbr))
+				get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
 			ft_printf("rb\n", rotate(queue_b));
 	}
 }
