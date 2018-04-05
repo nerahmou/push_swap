@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/14 14:02:31 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:42:17 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/05 06:59:57 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,16 +37,18 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 
 int			easy_sort(t_queue *queue_a, t_queue *queue_b)
 {
-	t_fnl fnl;
+	int	first;
+	int	next;
+	int	last;
 
 	while (!check_sort(queue_a))
 	{
-		fnl.first = queue_a->first->nbr;
-		fnl.next = get(queue_a, 1)->nbr;
-		fnl.last = get(queue_a, ft_lstlen(queue_a) - 1)->nbr;
-		if (fnl.first > fnl.last)
+		first = queue_a->first->nbr;
+		next = get(queue_a, 1)->nbr;
+		last = get(queue_a, ft_lstlen(queue_a) - 1)->nbr;
+		if (first > last)
 			ft_printf("ra\n", rotate(queue_a));
-		else if (fnl.first > fnl.next)
+		else if (first > next)
 			ft_printf("sa\n", swap(queue_a));
 		else
 			ultime_sort(queue_a, queue_b);

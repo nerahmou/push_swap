@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 13:38:33 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:52:44 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/05 07:13:45 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -97,6 +97,8 @@ int				parse_param(const char *argv[], t_queue **queue)
 	if (((*queue)->len = ft_lstlen(*queue)) == 1)
 	{
 		queue_clr(queue);
+		if (!ft_strcmp(argv[-1], "./checker"))
+			ft_printf("{green}{bold}OK{eoc}\n");
 		exit(EXIT_SUCCESS);
 	}
 	return (1);

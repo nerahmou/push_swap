@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:44:34 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/05 07:00:17 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,13 +14,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
-
-typedef struct		s_fnl
-{
-	int				first;
-	int				next;
-	int				last;
-}					t_fnl;
 
 t_queue				*init();
 void				thread(t_queue *queue, int nbr);

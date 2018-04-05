@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/26 12:10:19 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:41:49 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/05 07:03:20 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,10 +31,8 @@ static void	ultime_sort(t_queue *queue_a, t_queue *queue_b)
 		}
 		else
 		{
-			if (pos_a)
-				swp = 1;
-			while (pos_a-- > 1)
-				ft_printf("rb\n", rotate(queue_b));
+			while (pos_a-- > 0)
+				ft_printf("rb\n", rotate(queue_b), swp = 1);
 			if (swp)
 				ft_printf("sb\n", swap(queue_b));
 		}

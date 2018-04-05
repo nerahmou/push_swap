@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/04/03 21:01:48 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/05 07:00:48 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ $(NAME): $(OBJ) $(INC)
 	
 $(NAME_2): $(OBJ_PUSH) $(INC)
 	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ_PUSH) -I $(INC) -L./libft -lft
+	@echo "push_swap created 👍 \n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
