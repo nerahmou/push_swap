@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:00 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:41:11 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/10 15:56:30 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int		check_low(t_queue *queue, int pivot, int rev)
+int		check_low(t_stack *stack, int pivot, int rev)
 {
 	t_elem	*tmp;
 	int		pos;
@@ -21,7 +21,7 @@ int		check_low(t_queue *queue, int pivot, int rev)
 	pos = 0;
 	if (!rev)
 	{
-		tmp = queue->first;
+		tmp = stack->first;
 		while (tmp->nbr >= pivot)
 		{
 			pos++;
@@ -31,7 +31,7 @@ int		check_low(t_queue *queue, int pivot, int rev)
 	else
 	{
 		pos++;
-		tmp = get(queue, ft_lstlen(queue) - 1);
+		tmp = get(stack, ft_lstlen(stack) - 1);
 		while (tmp->nbr >= pivot)
 		{
 			pos++;
@@ -41,7 +41,7 @@ int		check_low(t_queue *queue, int pivot, int rev)
 	return (pos);
 }
 
-int		check_pos(t_queue *queue, int rev)
+int		check_pos(t_stack *stack, int rev)
 {
 	t_elem	*tmp;
 	int		pos;
@@ -50,7 +50,7 @@ int		check_pos(t_queue *queue, int rev)
 
 	i = 0;
 	pos = 0;
-	tmp = queue->first;
+	tmp = stack->first;
 	min = tmp->nbr;
 	while (tmp)
 	{
@@ -65,7 +65,7 @@ int		check_pos(t_queue *queue, int rev)
 	return (pos);
 }
 
-int		check_pos_rev(t_queue *queue, int rev)
+int		check_pos_rev(t_stack *stack, int rev)
 {
 	t_elem	*tmp;
 	int		pos;
@@ -74,8 +74,8 @@ int		check_pos_rev(t_queue *queue, int rev)
 
 	i = 0;
 	pos = 0;
-	tmp = get(queue, ft_lstlen(queue) - 1);
-	min = queue->first->nbr;
+	tmp = get(stack, ft_lstlen(stack) - 1);
+	min = stack->first->nbr;
 	while (tmp)
 	{
 		if (!rev ? (min > tmp->nbr) : (tmp->nbr > min))
@@ -89,11 +89,11 @@ int		check_pos_rev(t_queue *queue, int rev)
 	return (pos);
 }
 
-int		check_sort(t_queue *queue)
+int		check_sort(t_stack *stack)
 {
 	t_elem *tmp;
 
-	tmp = queue->first;
+	tmp = stack->first;
 	while (tmp->next)
 	{
 		if (tmp->nbr > tmp->next->nbr)
@@ -103,11 +103,11 @@ int		check_sort(t_queue *queue)
 	return (1);
 }
 
-t_elem	*get(t_queue *queue, int pos)
+t_elem	*get(t_stack *stack, int pos)
 {
 	t_elem	*tmp;
 
-	tmp = queue->first;
+	tmp = stack->first;
 	while (pos--)
 		tmp = tmp->next;
 	return (tmp);

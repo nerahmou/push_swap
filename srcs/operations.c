@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/15 21:44:38 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:31:19 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/10 15:56:33 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	push(t_queue *dest, t_queue *src)
+int	push(t_stack *dest, t_stack *src)
 {
 	t_elem *new;
 
@@ -36,26 +36,26 @@ int	push(t_queue *dest, t_queue *src)
 	return (0);
 }
 
-int	swap(t_queue *queue)
+int	swap(t_stack *stack)
 {
 	t_elem *elem;
 
-	if (ft_lstlen(queue) < 2)
+	if (ft_lstlen(stack) < 2)
 		return (0);
-	elem = queue->first;
+	elem = stack->first;
 	ft_swap(&elem->nbr, &elem->next->nbr);
 	return (1);
 }
 
-int	reverse(t_queue *queue)
+int	reverse(t_stack *stack)
 {
 	t_elem *head;
 	t_elem *tmp;
 	t_elem *last;
 
-	if (!queue->first || ft_lstlen(queue) < 2)
+	if (!stack->first || ft_lstlen(stack) < 2)
 		return (0);
-	head = queue->first;
+	head = stack->first;
 	tmp = head;
 	while (tmp->next->next)
 		tmp = tmp->next;
@@ -64,25 +64,25 @@ int	reverse(t_queue *queue)
 	last->next = head;
 	last->prev = NULL;
 	head->prev = last;
-	queue->first = last;
+	stack->first = last;
 	return (0);
 }
 
-int	rotate(t_queue *queue)
+int	rotate(t_stack *stack)
 {
 	t_elem *tmp;
 	t_elem *head;
 
-	if (!queue->first || ft_lstlen(queue) < 2)
+	if (!stack->first || ft_lstlen(stack) < 2)
 		return (0);
-	tmp = queue->first;
+	tmp = stack->first;
 	head = tmp->next;
 	while (tmp->next)
 		tmp = tmp->next;
-	queue->first->next = NULL;
-	tmp->next = queue->first;
-	queue->first->prev = tmp;
+	stack->first->next = NULL;
+	tmp->next = stack->first;
+	stack->first->prev = tmp;
 	head->prev = NULL;
-	queue->first = head;
+	stack->first = head;
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: nerahmou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:17:07 by nerahmou          #+#    #+#              #
-#    Updated: 2018/04/05 07:00:48 by nerahmou    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/09/10 16:05:01 by nerahmou    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,14 @@ SRC_PATH = ./srcs
 OBJ_PATH = ./obj
 
 SRC_NAME =	checker.c\
-			set_queue.c\
+			set_stack.c\
 			parse_param.c\
 			check_operations.c\
 			operations.c\
 			get_n_check.c
 
 SRC_PUSH_NAME =	push_swap.c\
-				set_queue.c\
+				set_stack.c\
 				parse_param.c\
 				check_operations.c\
 				operations.c\
@@ -59,20 +59,20 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 SRC_PUSH = $(addprefix $(SRC_PATH)/,$(SRC_PUSH_NAME))
 OBJ_PUSH = $(addprefix $(OBJ_PATH)/,$(OBJ_PUSH_NAME))
 
-all: $(NAME) $(NAME_2)
+all: $(NAME) $(NAME_2) $(INC)
 
 $(NAME): $(OBJ) $(INC)
 	@make -C libft
-	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) -I $(INC) -L./libft -lft
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ) -L./libft -lft
 	@echo "checker created 👍 \n"
 	
 $(NAME_2): $(OBJ_PUSH) $(INC)
-	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ_PUSH) -I $(INC) -L./libft -lft
+	@$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJ_PUSH) -L./libft -lft 
 	@echo "push_swap created 👍 \n"
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@ -I $(INC)
 
 clean:
 	@rm -rf $(OBJ_PATH)

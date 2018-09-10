@@ -6,18 +6,18 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/26 15:37:48 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/03 20:40:30 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/10 15:56:37 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	found_less(t_queue *queue_a, int pivot)
+static int	found_less(t_stack *stack_a, int pivot)
 {
 	t_elem *tmp;
 
-	tmp = queue_a->first;
+	tmp = stack_a->first;
 	while (tmp)
 	{
 		if (tmp->nbr < pivot)
@@ -27,33 +27,33 @@ static int	found_less(t_queue *queue_a, int pivot)
 	return (0);
 }
 
-static void	part(t_queue *queue_a, t_queue *queue_b, int pos, int rev)
+static void	part(t_stack *stack_a, t_stack *stack_b, int pos, int rev)
 {
 	t_elem	*tmp;
 
 	if (!rev)
 	{
-		tmp = queue_a->first;
+		tmp = stack_a->first;
 		while (pos--)
 		{
-			if (ft_lstlen(queue_b) > 1 &&
-					(queue_b->first->nbr >
-					get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
-				ft_printf("rr\n", rotate(queue_a), rotate(queue_b));
+			if (ft_lstlen(stack_b) > 1 &&
+					(stack_b->first->nbr >
+					get(stack_b, ft_lstlen(stack_b) - 1)->nbr))
+				ft_printf("rr\n", rotate(stack_a), rotate(stack_b));
 			else
-				ft_printf("ra\n", rotate(queue_a));
+				ft_printf("ra\n", rotate(stack_a));
 		}
 	}
 	else
 	{
-		tmp = get(queue_a, ft_lstlen(queue_a) - 1);
+		tmp = get(stack_a, ft_lstlen(stack_a) - 1);
 		while (pos--)
-			ft_printf("rra\n", reverse(queue_a));
+			ft_printf("rra\n", reverse(stack_a));
 	}
-	ft_printf("pb\n", push(queue_b, queue_a));
+	ft_printf("pb\n", push(stack_b, stack_a));
 }
 
-static int	get_pivot(t_queue *queue, int *div)
+static int	get_pivot(t_stack *stack, int *div)
 {
 	t_elem	*tmp;
 	t_elem	*tmp2;
@@ -62,13 +62,13 @@ static int	get_pivot(t_queue *queue, int *div)
 	int		nbr;
 
 	i = 0;
-	tmp2 = queue->first;
-	middle = ft_lstlen(queue) / (ft_lstlen(queue) < 50 &&
+	tmp2 = stack->first;
+	middle = ft_lstlen(stack) / (ft_lstlen(stack) < 50 &&
 			*div > 2 ? (*div)-- : *div);
 	while (i != middle)
 	{
 		i = 0;
-		tmp = queue->first;
+		tmp = stack->first;
 		nbr = tmp2->nbr;
 		while (tmp)
 		{
@@ -81,7 +81,7 @@ static int	get_pivot(t_queue *queue, int *div)
 	return (nbr);
 }
 
-void		partition_med(t_queue *queue_a, t_queue *queue_b)
+void		partition_med(t_stack *stack_a, t_stack *stack_b)
 {
 	t_elem		*tmp;
 	int			pos_a;
@@ -89,24 +89,24 @@ void		partition_med(t_queue *queue_a, t_queue *queue_b)
 	int			pivot;
 	static int	div = 4;
 
-	tmp = queue_a->first;
-	pivot = get_pivot(queue_a, &div);
-	while (found_less(queue_a, pivot))
+	tmp = stack_a->first;
+	pivot = get_pivot(stack_a, &div);
+	while (found_less(stack_a, pivot))
 	{
-		pos_a = check_low(queue_a, pivot, 0);
-		pos_b = check_low(queue_a, pivot, 1);
+		pos_a = check_low(stack_a, pivot, 0);
+		pos_b = check_low(stack_a, pivot, 1);
 		if (pos_a < pos_b)
-			part(queue_a, queue_b, pos_a, 0);
+			part(stack_a, stack_b, pos_a, 0);
 		else
-			part(queue_a, queue_b, pos_b, 1);
-		if (ft_lstlen(queue_b) > 1 &&
-				(queue_b->first->nbr >
-				get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
-			ft_printf("rb\n", rotate(queue_b));
+			part(stack_a, stack_b, pos_b, 1);
+		if (ft_lstlen(stack_b) > 1 &&
+				(stack_b->first->nbr >
+				get(stack_b, ft_lstlen(stack_b) - 1)->nbr))
+			ft_printf("rb\n", rotate(stack_b));
 	}
 }
 
-void		partition_big(t_queue *queue_a, t_queue *queue_b)
+void		partition_big(t_stack *stack_a, t_stack *stack_b)
 {
 	t_elem		*tmp;
 	int			pos_a;
@@ -114,19 +114,19 @@ void		partition_big(t_queue *queue_a, t_queue *queue_b)
 	int			pivot;
 	static int	div = 7;
 
-	tmp = queue_a->first;
-	pivot = get_pivot(queue_a, &div);
-	while (found_less(queue_a, pivot))
+	tmp = stack_a->first;
+	pivot = get_pivot(stack_a, &div);
+	while (found_less(stack_a, pivot))
 	{
-		pos_a = check_low(queue_a, pivot, 0);
-		pos_b = check_low(queue_a, pivot, 1);
+		pos_a = check_low(stack_a, pivot, 0);
+		pos_b = check_low(stack_a, pivot, 1);
 		if (pos_a < pos_b)
-			part(queue_a, queue_b, pos_a, 0);
+			part(stack_a, stack_b, pos_a, 0);
 		else
-			part(queue_a, queue_b, pos_b, 1);
-		if (ft_lstlen(queue_b) > 1 &&
-				(queue_b->first->nbr >
-				get(queue_b, ft_lstlen(queue_b) - 1)->nbr))
-			ft_printf("rb\n", rotate(queue_b));
+			part(stack_a, stack_b, pos_b, 1);
+		if (ft_lstlen(stack_b) > 1 &&
+				(stack_b->first->nbr >
+				get(stack_b, ft_lstlen(stack_b) - 1)->nbr))
+			ft_printf("rb\n", rotate(stack_b));
 	}
 }

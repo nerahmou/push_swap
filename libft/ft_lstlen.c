@@ -6,20 +6,20 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 14:56:48 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/06 18:29:20 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/10 15:59:17 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_lstlen(t_queue *queue)
+size_t	ft_lstlen(t_stack *stack)
 {
 	size_t length;
 	t_elem *tmp;
 
 	length = 0;
-	tmp = queue->first;
+	tmp = stack->first;
 	while (tmp)
 	{
 		length++;
