@@ -6,7 +6,7 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/11/29 13:51:21 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/21 17:10:30 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/11 11:15:25 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,12 +46,12 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_queue
+typedef struct		s_stack
 {
 	struct s_elem	*first;
 	char			name;
 	size_t			len;
-}					t_queue;
+}					t_stack;
 
 typedef struct		s_elem
 {
@@ -60,12 +60,12 @@ typedef struct		s_elem
 	struct s_elem	*next;
 }					t_elem;
 
-typedef struct		s_queues
+typedef struct		s_stacks
 {
-	t_queue	*queue_a;
-	t_queue	*queue_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	char	*operation;
-}					t_queues;
+}					t_stacks;
 
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
@@ -136,5 +136,5 @@ void				ft_lstclear(void *content, size_t size);
 size_t				ft_char_pos(char *str, char c);
 int					ft_countwords(char *str, char c);
 int					ft_intlen(intmax_t n, int base);
-size_t				ft_lstlen(t_queue *queue);
+size_t				ft_lstlen(t_stack *stack);
 #endif

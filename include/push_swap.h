@@ -6,14 +6,14 @@
 /*   By: nerahmou <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/01 14:15:06 by nerahmou     #+#   ##    ##    #+#       */
-/*   Updated: 2018/09/10 15:57:11 by nerahmou    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/09/11 11:14:52 by nerahmou    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 t_stack				*init();
 void				thread(t_stack *stack, int nbr);
